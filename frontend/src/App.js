@@ -1,30 +1,28 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Experience from "./components/Experience";
-import Skills from "./components/Skills";
-import Projects from "./components/Projects";
-import Certifications from "./components/Certifications";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+import NewNavbar from "./components/NewNavbar";
+import NewHero from "./components/NewHero";
+import NewAbout from "./components/NewAbout";
+import NewExperience from "./components/NewExperience";
+import NewSkills from "./components/NewSkills";
+import NewProjects from "./components/NewProjects";
+import NewContact from "./components/NewContact";
+import NewFooter from "./components/NewFooter";
 import { Toaster } from "./components/ui/toaster";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Navbar />
-        <Hero />
-        <About />
-        <Experience />
-        <Skills />
-        <Projects />
-        <Certifications />
-        <Contact />
-        <Footer />
+        <NewNavbar />
+        <NewHero />
+        <NewAbout />
+        <NewExperience />
+        <NewSkills />
+        <NewProjects />
+        <NewContact />
+        <NewFooter />
         <Toaster />
       </div>
     </BrowserRouter>
