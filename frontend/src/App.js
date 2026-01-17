@@ -7,6 +7,7 @@ import NewAbout from "./components/NewAbout";
 import NewExperience from "./components/NewExperience";
 import NewSkills from "./components/NewSkills";
 import NewProjects from "./components/NewProjects";
+import NewCertifications from "./components/NewCertifications";
 import NewContact from "./components/NewContact";
 import NewFooter from "./components/NewFooter";
 import { Toaster } from "./components/ui/toaster";
@@ -21,6 +22,7 @@ function App() {
         <NewExperience />
         <NewSkills />
         <NewProjects />
+        <NewCertifications />
         <NewContact />
         <NewFooter />
         <Toaster />
