@@ -5,8 +5,14 @@ import { about } from '../data/mock';
 
 const About = () => {
   return (
-    <section id="about" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-20 bg-white relative overflow-hidden">
+      {/* Subtle Animated Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-10 right-10 w-64 h-64 bg-blue-50 rounded-full filter blur-3xl opacity-50 animate-pulse"></div>
+        <div className="absolute bottom-20 left-10 w-48 h-48 bg-gray-100 rounded-full filter blur-3xl opacity-50 animate-pulse" style={{ animationDelay: '1s' }}></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
             About Me
@@ -40,7 +46,7 @@ const About = () => {
             
             <div className="space-y-6">
               {about.education.map((edu, index) => (
-                <Card key={index} className="border-l-4 border-l-blue-900 hover:shadow-lg transition-shadow">
+                <Card key={index} className="border-l-4 border-l-blue-900 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
                   <CardContent className="pt-6">
                     <h4 className="font-bold text-lg text-gray-900 mb-2">
                       {edu.degree}
