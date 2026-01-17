@@ -12,7 +12,7 @@ export const personalInfo = {
 };
 
 export const about = {
-  bio: "I'm a recent Computer Science graduate from Vellore Institute of Technology with hands-on experience in deep learning, full-stack development, and machine learning. During my internship at Stipe Solutions, I brought designs to life by implementing responsive web applications. My passion lies in building intelligent systems and creating impactful solutions using AI and data-driven technologies. I'm actively seeking opportunities where I can contribute my skills in GenAI, machine learning, software development, or data analytics.",
+  bio: "Computer Science graduate from Vellore Institute of Technology with specialized expertise in deep learning, full-stack development, and machine learning systems. Recently completed a React development internship at Stipe Solutions, where I transformed UI/UX designs into production-ready, responsive web applications. My technical focus centers on developing intelligent AI-driven systems and leveraging data science methodologies to solve complex real-world problems. Currently seeking challenging roles in Generative AI, Machine Learning Engineering, Software Development, Python Development, or Data Analytics where I can drive innovation and deliver measurable impact.",
   education: [
     {
       degree: "Bachelor of Computer Science Engineering",
