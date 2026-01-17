@@ -3,8 +3,11 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { Code, Brain, Database, Wrench } from 'lucide-react';
 import { skills } from '../data/mock';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Skills = () => {
+  const [sectionRef, isVisible] = useScrollAnimation({ threshold: 0.2 });
+
   const skillCategories = [
     {
       title: 'Programming Languages',
@@ -39,7 +42,13 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-white relative overflow-hidden">
+    <section 
+      id="skills" 
+      ref={sectionRef}
+      className={`py-20 bg-white relative overflow-hidden transition-all duration-1000 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}
+    >
       {/* Animated Grid Pattern Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
         <div className="absolute inset-0" style={{
@@ -63,7 +72,12 @@ const Skills = () => {
             return (
               <Card
                 key={index}
-                className="hover:shadow-xl transition-all duration-300 group transform hover:-translate-y-2"
+                className={`hover:shadow-xl transition-all duration-500 group transform ${
+                  isVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-10'
+                } hover:-translate-y-2`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-2">
@@ -90,7 +104,8 @@ const Skills = () => {
                 </CardContent>
               </Card>
             );
-          })}</div>
+          })}
+        </div>
       </div>
 
       <style jsx>{`
