@@ -31,12 +31,141 @@ html {
     }
 }
 
+@keyframes float-slow {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px) rotateX(0deg) rotateY(0deg);
+    }
+    25% {
+        transform: translateY(-20px) translateX(10px) rotateX(15deg) rotateY(15deg);
+    }
+    50% {
+        transform: translateY(-40px) translateX(-10px) rotateX(30deg) rotateY(30deg);
+    }
+    75% {
+        transform: translateY(-20px) translateX(10px) rotateX(15deg) rotateY(15deg);
+    }
+}
+
+@keyframes float-medium {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+    33% {
+        transform: translateY(-30px) translateX(20px) rotateX(20deg) rotateY(20deg) rotateZ(20deg);
+    }
+    66% {
+        transform: translateY(-15px) translateX(-15px) rotateX(40deg) rotateY(40deg) rotateZ(40deg);
+    }
+}
+
+@keyframes float-fast {
+    0%, 100% {
+        transform: translateY(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+    50% {
+        transform: translateY(-50px) rotateX(180deg) rotateY(180deg) rotateZ(180deg);
+    }
+}
+
+@keyframes particle {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 0.4;
+    }
+    100% {
+        transform: translateY(-100px) translateX(50px) scale(0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes spin-slow {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin-reverse {
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation Classes */
 .animate-blob {
     animation: blob 7s infinite;
 }
 
 .animate-scroll {
     animation: scroll 2s ease-in-out infinite;
+}
+
+.animate-float-slow {
+    animation: float-slow 8s ease-in-out infinite;
+}
+
+.animate-float-medium {
+    animation: float-medium 6s ease-in-out infinite;
+}
+
+.animate-float-fast {
+    animation: float-fast 4s ease-in-out infinite;
+}
+
+.animate-particle {
+    animation: particle linear infinite;
+}
+
+.animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+}
+
+.animate-spin-reverse {
+    animation: spin-reverse 15s linear infinite;
+}
+
+.animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+}
+
+/* Animation Delays */
+.animation-delay-200 {
+    animation-delay: 0.2s;
+    opacity: 0;
+}
+
+.animation-delay-400 {
+    animation-delay: 0.4s;
+    opacity: 0;
+}
+
+.animation-delay-600 {
+    animation-delay: 0.6s;
+    opacity: 0;
+}
+
+.animation-delay-800 {
+    animation-delay: 0.8s;
+    opacity: 0;
 }
 
 .animation-delay-2000 {
@@ -47,6 +176,100 @@ html {
     animation-delay: 4s;
 }
 
+/* 3D Cube Styles */
+.cube-3d,
+.cube-3d-small,
+.cube-3d-large {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.cube-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(30, 64, 175, 0.15);
+    border: 2px solid rgba(30, 64, 175, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+/* Cube Face Positions - Standard Size */
+.cube-3d .cube-front {
+    transform: translateZ(40px);
+}
+
+.cube-3d .cube-back {
+    transform: translateZ(-40px) rotateY(180deg);
+}
+
+.cube-3d .cube-right {
+    transform: rotateY(90deg) translateZ(40px);
+}
+
+.cube-3d .cube-left {
+    transform: rotateY(-90deg) translateZ(40px);
+}
+
+.cube-3d .cube-top {
+    transform: rotateX(90deg) translateZ(40px);
+}
+
+.cube-3d .cube-bottom {
+    transform: rotateX(-90deg) translateZ(40px);
+}
+
+/* Small Cube */
+.cube-3d-small .cube-front {
+    transform: translateZ(32px);
+}
+
+.cube-3d-small .cube-back {
+    transform: translateZ(-32px) rotateY(180deg);
+}
+
+.cube-3d-small .cube-right {
+    transform: rotateY(90deg) translateZ(32px);
+}
+
+.cube-3d-small .cube-left {
+    transform: rotateY(-90deg) translateZ(32px);
+}
+
+.cube-3d-small .cube-top {
+    transform: rotateX(90deg) translateZ(32px);
+}
+
+.cube-3d-small .cube-bottom {
+    transform: rotateX(-90deg) translateZ(32px);
+}
+
+/* Large Cube */
+.cube-3d-large .cube-front {
+    transform: translateZ(48px);
+}
+
+.cube-3d-large .cube-back {
+    transform: translateZ(-48px) rotateY(180deg);
+}
+
+.cube-3d-large .cube-right {
+    transform: rotateY(90deg) translateZ(48px);
+}
+
+.cube-3d-large .cube-left {
+    transform: rotateY(-90deg) translateZ(48px);
+}
+
+.cube-3d-large .cube-top {
+    transform: rotateX(90deg) translateZ(48px);
+}
+
+.cube-3d-large .cube-bottom {
+    transform: rotateX(-90deg) translateZ(48px);
+}
+
 /* Prevent center alignment */
 .App {
     text-align: left;
@@ -54,15 +277,20 @@ html {
 
 /* Ensure proper transitions only for specific elements */
 button {
-    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 a {
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 /* Remove default focus outline, add custom */
 *:focus-visible {
     outline: 2px solid #1e40af;
     outline-offset: 2px;
+}
+
+/* Perspective for 3D effects */
+section {
+    perspective: 1000px;
 }
