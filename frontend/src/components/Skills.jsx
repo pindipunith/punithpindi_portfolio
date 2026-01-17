@@ -39,8 +39,17 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="py-20 bg-white relative overflow-hidden">
+      {/* Animated Grid Pattern Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'linear-gradient(rgba(30, 64, 175, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(30, 64, 175, 0.05) 1px, transparent 1px)',
+          backgroundSize: '50px 50px',
+          animation: 'grid-move 20s linear infinite'
+        }}></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
             Technical Skills
@@ -54,7 +63,7 @@ const Skills = () => {
             return (
               <Card
                 key={index}
-                className="hover:shadow-xl transition-all duration-300 group"
+                className="hover:shadow-xl transition-all duration-300 group transform hover:-translate-y-2"
               >
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-2">
@@ -81,9 +90,19 @@ const Skills = () => {
                 </CardContent>
               </Card>
             );
-          })}
-        </div>
+          })}</div>
       </div>
+
+      <style jsx>{`
+        @keyframes grid-move {
+          0% {
+            transform: translateY(0);
+          }
+          100% {
+            transform: translateY(50px);
+          }
+        }
+      `}</style>
     </section>
   );
 };
