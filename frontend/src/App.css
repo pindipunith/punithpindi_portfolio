@@ -1,34 +1,68 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
+/* Custom Animations */
+@keyframes blob {
+    0% {
+        transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+        transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+    100% {
+        transform: translate(0px, 0px) scale(1);
     }
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+@keyframes scroll {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(8px);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
-.App-link {
-    color: #61dafb;
+.animate-blob {
+    animation: blob 7s infinite;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.animate-scroll {
+    animation: scroll 2s ease-in-out infinite;
+}
+
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+    animation-delay: 4s;
+}
+
+/* Prevent center alignment */
+.App {
+    text-align: left;
+}
+
+/* Ensure proper transitions only for specific elements */
+button {
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+a {
+    transition: color 0.3s ease;
+}
+
+/* Remove default focus outline, add custom */
+*:focus-visible {
+    outline: 2px solid #1e40af;
+    outline-offset: 2px;
 }
