@@ -3,28 +3,51 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Card, CardContent } from './ui/card';
-import { Mail, Phone, Linkedin, Github, Send } from 'lucide-react';
+import { Mail, Phone, Linkedin, Github, Send, Loader2 } from 'lucide-react';
 import { personalInfo } from '../data/mock';
 import { useToast } from '../hooks/use-toast';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { sendEmail } from '../services/emailService';
 
 const Contact = () => {
   const { toast } = useToast();
   const [sectionRef, isVisible] = useScrollAnimation({ threshold: 0.2 });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Mock form submission
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon!",
-    });
-    setFormData({ name: '', email: '', message: '' });
+    setIsSubmitting(true);
+
+    try {
+      const result = await sendEmail(formData);
+      
+      if (result.success) {
+        toast({
+          title: "Message Sent!",
+          description: result.message,
+        });
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        toast({
+          title: "Error",
+          description: result.message,
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "An unexpected error occurred. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
