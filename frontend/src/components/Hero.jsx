@@ -20,8 +20,8 @@ const Hero = () => {
         <div className="absolute top-40 right-10 w-72 h-72 bg-gray-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
         <div className="absolute -bottom-8 left-20 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-4000"></div>
         
-        {/* Floating 3D Cubes */}
-        <div className="absolute top-1/4 left-1/4 w-20 h-20 animate-float-slow">
+        {/* Floating 3D Cubes - Positioned away from center content */}
+        <div className="absolute top-20 left-10 w-20 h-20 animate-float-slow">
           <div className="cube-3d">
             <div className="cube-face cube-front"></div>
             <div className="cube-face cube-back"></div>
@@ -32,7 +32,7 @@ const Hero = () => {
           </div>
         </div>
         
-        <div className="absolute top-1/3 right-1/4 w-16 h-16 animate-float-medium">
+        <div className="absolute top-32 right-16 w-16 h-16 animate-float-medium">
           <div className="cube-3d-small">
             <div className="cube-face cube-front"></div>
             <div className="cube-face cube-back"></div>
@@ -43,8 +43,30 @@ const Hero = () => {
           </div>
         </div>
         
-        <div className="absolute bottom-1/4 right-1/3 w-24 h-24 animate-float-fast">
+        <div className="absolute bottom-32 right-20 w-24 h-24 animate-float-fast">
           <div className="cube-3d-large">
+            <div className="cube-face cube-front"></div>
+            <div className="cube-face cube-back"></div>
+            <div className="cube-face cube-right"></div>
+            <div className="cube-face cube-left"></div>
+            <div className="cube-face cube-top"></div>
+            <div className="cube-face cube-bottom"></div>
+          </div>
+        </div>
+        
+        <div className="absolute top-1/2 left-16 w-20 h-20 animate-float-medium" style={{ animationDelay: '1s' }}>
+          <div className="cube-3d">
+            <div className="cube-face cube-front"></div>
+            <div className="cube-face cube-back"></div>
+            <div className="cube-face cube-right"></div>
+            <div className="cube-face cube-left"></div>
+            <div className="cube-face cube-top"></div>
+            <div className="cube-face cube-bottom"></div>
+          </div>
+        </div>
+        
+        <div className="absolute bottom-20 left-1/4 w-16 h-16 animate-float-slow" style={{ animationDelay: '2s' }}>
+          <div className="cube-3d-small">
             <div className="cube-face cube-front"></div>
             <div className="cube-face cube-back"></div>
             <div className="cube-face cube-right"></div>
