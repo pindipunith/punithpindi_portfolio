@@ -204,10 +204,20 @@ const Contact = () => {
               <Button
                 type="submit"
                 size="lg"
-                className="w-full bg-blue-900 hover:bg-blue-800 text-white transform hover:scale-105 transition-all"
+                disabled={isSubmitting}
+                className="w-full bg-blue-900 hover:bg-blue-800 text-white transform hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <Send className="w-5 h-5 mr-2" />
-                Send Message
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5 mr-2" />
+                    Send Message
+                  </>
+                )}
               </Button>
             </form>
           </div>
