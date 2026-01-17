@@ -3,11 +3,31 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { Briefcase, MapPin, Calendar } from 'lucide-react';
 import { experience } from '../data/mock';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Experience = () => {
+  const [sectionRef, isVisible] = useScrollAnimation({ threshold: 0.2 });
+
   return (
-    <section id="experience" className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section 
+      id="experience" 
+      ref={sectionRef}
+      className={`py-20 bg-gray-50 relative overflow-hidden transition-all duration-1000 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}
+    >
+      {/* Animated Background Pattern */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
+        <div className="absolute top-0 left-0 w-full h-full" 
+          style={{
+            backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(30, 64, 175, 0.15) 1px, transparent 0)',
+            backgroundSize: '40px 40px',
+            animation: 'pattern-move 30s linear infinite'
+          }}
+        ></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
             Experience
@@ -19,7 +39,12 @@ const Experience = () => {
           {experience.map((exp, index) => (
             <Card
               key={index}
-              className="hover:shadow-xl transition-all duration-300 border-l-4 border-l-blue-900"
+              className={`hover:shadow-xl transition-all duration-500 border-l-4 border-l-blue-900 transform ${
+                isVisible 
+                  ? 'opacity-100 translate-x-0' 
+                  : 'opacity-0 -translate-x-10'
+              }`}
+              style={{ transitionDelay: `${index * 200}ms` }}
             >
               <CardHeader>
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
@@ -64,6 +89,17 @@ const Experience = () => {
           ))}
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes pattern-move {
+          0% {
+            transform: translateY(0) translateX(0);
+          }
+          100% {
+            transform: translateY(40px) translateX(40px);
+          }
+        }
+      `}</style>
     </section>
   );
 };
