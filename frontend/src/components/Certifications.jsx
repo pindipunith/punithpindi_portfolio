@@ -3,11 +3,32 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { ExternalLink, Award } from 'lucide-react';
 import { certifications } from '../data/mock';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Certifications = () => {
+  const [sectionRef, isVisible] = useScrollAnimation({ threshold: 0.3 });
+
   return (
-    <section id="certifications" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section 
+      id="certifications" 
+      ref={sectionRef}
+      className={`py-20 bg-white relative overflow-hidden transition-all duration-1000 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}
+    >
+      {/* Subtle Wave Pattern */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-5">
+        <svg className="absolute w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="wave" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+              <path d="M0 50 Q 25 30, 50 50 T 100 50" fill="none" stroke="#1e40af" strokeWidth="2"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#wave)" />
+        </svg>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
             Certifications
@@ -19,7 +40,12 @@ const Certifications = () => {
           {certifications.map((cert, index) => (
             <Card
               key={index}
-              className="hover:shadow-xl transition-all duration-300 group border-t-4 border-t-blue-900"
+              className={`hover:shadow-xl transition-all duration-500 group border-t-4 border-t-blue-900 transform ${
+                isVisible 
+                  ? 'opacity-100 translate-y-0 rotate-0' 
+                  : 'opacity-0 translate-y-10 rotate-3'
+              }`}
+              style={{ transitionDelay: `${index * 150}ms` }}
             >
               <CardHeader>
                 <div className="flex items-center gap-2 mb-3">

@@ -6,9 +6,11 @@ import { Card, CardContent } from './ui/card';
 import { Mail, Phone, Linkedin, Github, Send } from 'lucide-react';
 import { personalInfo } from '../data/mock';
 import { useToast } from '../hooks/use-toast';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Contact = () => {
   const { toast } = useToast();
+  const [sectionRef, isVisible] = useScrollAnimation({ threshold: 0.2 });
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -60,8 +62,20 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section 
+      id="contact" 
+      ref={sectionRef}
+      className={`py-20 bg-gray-50 relative overflow-hidden transition-all duration-1000 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}
+    >
+      {/* Animated Gradient Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full filter blur-3xl opacity-30 animate-pulse"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gray-200 rounded-full filter blur-3xl opacity-30 animate-pulse" style={{ animationDelay: '1s' }}></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
             Get In Touch
@@ -84,7 +98,12 @@ const Contact = () => {
               return (
                 <Card
                   key={index}
-                  className="hover:shadow-lg transition-all duration-300 cursor-pointer"
+                  className={`hover:shadow-lg transition-all duration-500 cursor-pointer transform ${
+                    isVisible 
+                      ? 'opacity-100 translate-x-0' 
+                      : 'opacity-0 -translate-x-10'
+                  }`}
+                  style={{ transitionDelay: `${index * 100}ms` }}
                   onClick={() => window.open(method.link, method.icon === Phone ? '_self' : '_blank')}
                 >
                   <CardContent className="flex items-center gap-4 p-6">
@@ -106,7 +125,11 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div>
+          <div
+            className={`transition-all duration-1000 delay-400 ${
+              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+            }`}
+          >
             <h3 className="text-2xl font-bold text-gray-900 mb-6">
               Send a Message
             </h3>
@@ -158,7 +181,7 @@ const Contact = () => {
               <Button
                 type="submit"
                 size="lg"
-                className="w-full bg-blue-900 hover:bg-blue-800 text-white"
+                className="w-full bg-blue-900 hover:bg-blue-800 text-white transform hover:scale-105 transition-all"
               >
                 <Send className="w-5 h-5 mr-2" />
                 Send Message
