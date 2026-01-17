@@ -89,6 +89,12 @@ export const githubProjects = [
     description: "Advanced ML models (Random Forest, DNNs) using Copernicus Sentinel-2 satellite data for weather prediction and climate computing.",
     technologies: ["Machine Learning", "Python", "Satellite Data", "Deep Neural Networks"],
     category: "Machine Learning"
+  },
+  {
+    title: "AI Chatbot with NLP",
+    description: "Intelligent conversational AI bot using natural language processing for customer support automation with sentiment analysis.",
+    technologies: ["NLP", "Python", "TensorFlow", "Flask", "MongoDB"],
+    category: "Artificial Intelligence"
   }
 ];
 
