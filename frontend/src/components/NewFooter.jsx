@@ -77,7 +77,7 @@ const NewFooter = () => {
             © {currentYear} Punith Pindi. All rights reserved.
           </p>
           <p className="text-gray-400 text-sm flex items-center gap-2">
-            Built with <Heart size={16} className="text-red-500 fill-current" /> and dedication
+            Designed & Developed by Punith Pindi
           </p>
         </div>
       </div>
