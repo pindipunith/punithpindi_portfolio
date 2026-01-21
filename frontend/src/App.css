@@ -1,34 +1,119 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+/* Dreelio-Inspired Design System */
+.App {
+    text-align: left;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+/* Typography - Condensed Headings */
+.condensed-heading {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
 }
 
-.App-link {
-    color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+/* Animations */
+@keyframes fadeInUp {
     from {
-        transform: rotate(0deg);
+        opacity: 0;
+        transform: translateY(30px);
     }
     to {
-        transform: rotate(360deg);
+        opacity: 1;
+        transform: translateY(0);
     }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slide-in-left {
+    animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.animate-slide-in-right {
+    animation: slideInRight 0.8s ease-out forwards;
+}
+
+/* Delay Classes */
+.delay-100 { animation-delay: 0.1s; opacity: 0; }
+.delay-200 { animation-delay: 0.2s; opacity: 0; }
+.delay-300 { animation-delay: 0.3s; opacity: 0; }
+.delay-400 { animation-delay: 0.4s; opacity: 0; }
+.delay-500 { animation-delay: 0.5s; opacity: 0; }
+
+/* Button Styles - Pill Shaped */
+.pill-button {
+    border-radius: 9999px;
+    transition: all 0.3s ease;
+}
+
+.pill-button:hover {
+    transform: scale(1.05);
+}
+
+/* Card Styles */
+.design-card {
+    border-radius: 24px;
+    transition: all 0.3s ease;
+}
+
+.design-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Background Gradients */
+.bg-sky-gradient {
+    background: linear-gradient(135deg, #C9E4F5 0%, #B8D8E8 100%);
+}
+
+.bg-cream {
+    background: #F5F1ED;
+}
+
+/* Focus States */
+*:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: 2px;
 }
