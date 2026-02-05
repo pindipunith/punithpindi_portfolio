@@ -8,7 +8,7 @@ export const personalInfo = {
   phone: "9642956667",
   github: "https://github.com/pindipunith",
   linkedin: "https://linkedin.com/in/pindipunith/",
-  resumeLink: "https://customer-assets.emergentagent.com/job_8d15b0d7-1dac-4a92-b650-fe786434f825/artifacts/8d9kxf93_PunithPindi_Resume.pdf"
+  resumeLink: "https://drive.google.com/file/d/1CFoSvgui2wDuQiFIlupa_5m2U5fg8Jbe/view?usp=drivesdk"
 };
 
 export const about = {
@@ -99,6 +99,12 @@ export const githubProjects = [
 ];
 
 export const certifications = [
+  {
+    title: "AI Workshop",
+    issuer: "Workshop Provider",
+    date: "January 2025",
+    link: "https://drive.google.com/file/d/1-TAyegxbA-ZjbCD8KXpvnwOBm3Ifc_1N/view?usp=drivesdk"
+  },
   {
     title: "Oracle Cloud Infrastructure 2025 Generative AI Professional",
     issuer: "Oracle",
